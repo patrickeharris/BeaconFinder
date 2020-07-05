@@ -56,79 +56,14 @@ public class Main
                 JSONObject json3 = null;
                 JSONObject json4 = null;
                 
-                String[] signLines = { text2 };
-                
-                JSONObject[] objects = { json1, json2, json3, json4 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                
+                JSONObject[] objects = { json1, json2, json3, json4 };                
                 writer.newLine();
               } 
             } 
           } 
         } 
       } 
-    } 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+    }     
     writer.close();
   }
 }
