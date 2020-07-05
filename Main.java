@@ -13,6 +13,9 @@ public class Main
 {
   public static void main(String[] args) throws IOException { readSignsAnvil(); }
 
+
+
+  
   public static void readSignsAnvil() throws IOException {
     File folder = new File("region");
     File[] listOfFiles = folder.listFiles();
@@ -36,31 +39,74 @@ public class Main
             nbttagcompund2 = nbttagcompund.getCompoundTag("Level");
 
             
-            NBTTagList nbttaglist = nbttagcompund2.getTagList("Entities", 10);
+            NBTTagList nbttaglist = nbttagcompund2.getTagList("TileEntities", 10);
             
             for (int i = 0; i < nbttaglist.tagCount(); i++) {
               
               NBTTagCompound entity = nbttaglist.getCompoundTagAt(i);
               
-              if (entity.hasKey("Item") && entity.hasKey("Facing")) {
-                String text1 = entity.getTag("Pos").toString();
-                text1 = text1.replaceAll("0:", "");
-                text1 = text1.replaceAll("1:", "");
-                text1 = text1.replaceAll("2:", "");
-                text1 = text1.replaceAll("d", "");
-
+              if (entity.hasKey("Levels")) {
                 
-                text1 = text1.substring(1, text1.lastIndexOf(","));
-                text1 = text1.replaceAll(",", ", ");
-                writer.write("Chunk [" + x + ", " + z + "]\t(" + text1 + ")\t");
-                String text2 = String.valueOf(entity.getCompoundTag("Item").getTag("id"));
-                text2 = text2.replaceAll("\"", "");
-                writer.write("Item: " + text2);
+                writer.write("Chunk [" + x + ", " + z + "]\t(" + entity.getInteger("x") + ", " + entity.getInteger("y") + ", " + entity.getInteger("z") + ")\t");
+                
+                String text2 = String.valueOf(entity.getInteger("Levels"));
+                writer.write("Levels: " + text2);
                 JSONObject json1 = null;
                 JSONObject json2 = null;
                 JSONObject json3 = null;
-                JSONObject json4 = null;                
-                JSONObject[] objects = { json1, json2, json3, json4 };  
+                JSONObject json4 = null;
+                
+                String[] signLines = { text2 };
+                
+                JSONObject[] objects = { json1, json2, json3, json4 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
                 writer.newLine();
               } 
             } 
@@ -68,6 +114,21 @@ public class Main
         } 
       } 
     } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     writer.close();
   }
 }
